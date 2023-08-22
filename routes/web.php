@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,17 +12,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return 'home';
+//home
+Route::get('/', 'Homecontroller@showIndex' );
+Route::get('/home', 'Homecontroller@showIndex' );
+Route::get('/index', 'Homecontroller@showIndex' );
+//home
+//login
+Route::get('/login', 'Homecontroller@showLogin' );
+//register
+Route::get('/register', 'Homecontroller@showRegister' );
+Route::get('/index', function () {
+    return view('index');
 });
-Route::get('/demo', function () {
-    return 'dai';
+Route::get('/register', function () {
+    return view('register');
 });
-Route::get('/demo/demo1', function () {
-    return 'demo1';
-});
-Route::any('submit/{a}&{b}', function ($a,$b) {
-    return $a.': '.$b;
-});
-Route::get('/controller/{a}/{b}', 'Homecontroller@show' );
-Route::get('/hello', 'Homecontroller@hello' );
